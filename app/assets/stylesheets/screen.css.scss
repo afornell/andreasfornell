@@ -21,6 +21,7 @@ a {
   font-size: 50px;
   color: #222;
   @include text-shadow(rgba(#fff, 1) 1px 1px 0);
+  text-align: center;
 }
 
 h1 { 
