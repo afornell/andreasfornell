@@ -1,0 +1,30 @@
+@import "compass";
+
+body {
+  font-family: 'PT Sans', sans-serif;
+  background: #eee;
+  color: #333;
+}
+
+a {
+  color: #999;
+  text-decoration: none;
+  
+  &:hover {
+    color: #111;
+    background: #6F9! important;
+  }
+}
+
+#main-title {
+  font-family: 'Pacifico', cursive;
+  font-size: 50px;
+  color: #222;
+  @include text-shadow(rgba(#fff, 1) 1px 1px 0);
+}
+
+h1 { 
+  font-size: 30px;
+  color: #333;
+  @include text-shadow(rgba(#fff, 0.85) 0 1px 0);
+}
