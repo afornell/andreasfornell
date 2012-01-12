@@ -1,9 +1,19 @@
-@import "compass";
+@import 'compass/css3';
+@import 'compass/reset';
+@import 'compass/utilities';
+@import "compass/layout.scss";
+ 
+$scrabble-item-size: 75px;
+$scrabble-width: $scrabble-item-size * 15;
+$tile-bg: #f9f3e3;
+$tile-color: #271e04;
+
 
 body {
   font-family: 'PT Sans', sans-serif;
-  background: #eee;
   color: #333;
+  overflow: hidden;
+  @include background-image(linear-gradient(#fff, #ddd));
 }
 
 a {
@@ -16,16 +26,154 @@ a {
   }
 }
 
-#main-title {
-  font-family: 'Pacifico', cursive;
-  font-size: 50px;
-  color: #222;
-  @include text-shadow(rgba(#fff, 1) 1px 1px 0);
-  text-align: center;
+ul#scrabble {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-top: -$scrabble-item-size / 2;
+  margin-left: -$scrabble-width / 2;
+  height: $scrabble-item-size;
+  list-style: none;
+  @include border-radius(5px);
+  border: 1px solid #999;
+  border-top: 1px solid #555;
+  border-bottom: 1px solid #fff;
+  @include background-image(linear-gradient(#999, #aaa));
+  padding: 5px 5px 7px;
+  
+  li {
+    position: relative;
+    float: left;
+    list-style-type: none;
+    height: $scrabble-item-size;
+    width: $scrabble-item-size;
+    margin: 0;
+    @include border-radius(5px);
+    border: 1px solid $tile-color;
+    cursor: move;
+    @include box-shadow(rgba(0,0,0,0.35) 0 2px 10px);
+    
+    em {
+      position: absolute;
+      z-index: 99;
+      display: inline-block;
+      @include border-radius(5px);
+      background: #fff;
+      height: $scrabble-item-size - 1;
+      width: $scrabble-item-size;
+      margin: 0;
+      font-family: 'Droid Serif', serif;
+      font-size: 44px;
+      font-weight: 700;
+      line-height: $scrabble-item-size;
+      @include text-shadow(rgba(255, 255, 255, 1) 0 1px 1px);
+      text-align: center;
+      color: $tile-color;
+      @include background-image(linear-gradient($tile-bg, $tile-bg - 25));
+      border-top: 1px solid #fff;
+    }
+  }
 }
 
-h1 { 
-  font-size: 30px;
-  color: #333;
-  @include text-shadow(rgba(#fff, 0.85) 0 1px 0);
+
+
+
+
+
+
+
+/*** ENDLESS LAYOUT ***/
+@include sticky-footer(50px, "#layout", "#layout_footer", "#footer");
+$nav-width: 50px;
+$nav-button-size: 40px;
+$nav-buttons-height: $nav-button-size * 3;
+$room-inventory-width: 200px;
+$sidepanel-width: 200px;
+
+#viewport {
+  overflow: hidden;
+
+  #sidepanel {
+    position: absolute;
+    top: 0;
+    right: -$sidepanel-width;
+    bottom: 0;
+    width: $sidepanel-width;
+    background: #222;
+    display: none;
+    z-index: 99;
+  }
+
+  #nav {
+    position: absolute;
+    top: 0;
+    bottom: 0; 
+    right: 0;
+    width: $nav-width;
+    height: 100%;
+    overflow: hidden;
+    background: #ddd;
+    
+    ul {
+      position: absolute;
+      top: 50%;
+      height: $nav-buttons-height;
+      margin-top: -$nav-buttons-height / 2;
+      background: red;
+      list-style: none;
+      
+      li {
+        width: $nav-button-size;
+        height: $nav-button-size;
+        padding: 0;
+        margin: 0;
+        background: #000;k
+        
+        a {
+          display: block;
+        }
+      }
+    }
+  }
+
+  #room {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: $nav-width;
+    bottom: 0;
+    overflow: auto; 
+    background: #fff;
+    
+    
+    #room-inventory {
+      position: absolute;
+      top: 0;
+      bottom: 0; 
+      right: 0;
+      width: $room-inventory-width;
+      height: 100%;
+      overflow: hidden;
+      background: #eee;
+    }
+
+    #room-main {
+      position: absolute;
+      top: 15px;
+      left: 15px;
+      right: $room-inventory-width;
+      bottom: 15px;
+      overflow: auto; 
+      background: #ccc;
+      
+      #header {
+        background: #bbb;
+      }
+      
+      #footer {
+        background: #aaa;
+      }
+    }
+  }
 }
+

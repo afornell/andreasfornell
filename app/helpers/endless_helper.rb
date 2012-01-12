@@ -1,0 +1,2 @@
+module EndlessHelper
+end

@@ -1,0 +1,2 @@
+class EndlessController < ApplicationController
+end

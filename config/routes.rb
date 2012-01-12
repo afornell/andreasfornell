@@ -1,6 +1,8 @@
 Andreasfornell::Application.routes.draw do
   # The priority is based upon order of creation:
   # first created -> highest priority.
+  
+  match 'endless' => 'endless#index'
 
   # Sample of regular route:
   #   match 'products/:id' => 'catalog#view'
