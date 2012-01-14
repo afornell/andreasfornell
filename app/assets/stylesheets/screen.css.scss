@@ -3,7 +3,7 @@
 @import 'compass/utilities';
 @import "compass/layout.scss";
  
-$scrabble-item-size: 75px;
+$scrabble-item-size: 50px;
 $scrabble-width: $scrabble-item-size * 15;
 $tile-bg: #f9f3e3;
 $tile-color: #271e04;
@@ -34,12 +34,14 @@ ul#scrabble {
   margin-left: -$scrabble-width / 2;
   height: $scrabble-item-size;
   list-style: none;
+  /*
   @include border-radius(5px);
   border: 1px solid #999;
   border-top: 1px solid #555;
   border-bottom: 1px solid #fff;
   @include background-image(linear-gradient(#999, #aaa));
   padding: 5px 5px 7px;
+  */
   
   li {
     position: relative;
@@ -63,7 +65,7 @@ ul#scrabble {
       width: $scrabble-item-size;
       margin: 0;
       font-family: 'Droid Serif', serif;
-      font-size: 44px;
+      font-size: 30px;
       font-weight: 700;
       line-height: $scrabble-item-size;
       @include text-shadow(rgba(255, 255, 255, 1) 0 1px 1px);
